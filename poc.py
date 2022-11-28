@@ -39,10 +39,6 @@ datasets = [
     {
         'name': 'ams_latest_core_site_readings.shp',
         'url': 'https://opendata.arcgis.com/api/v3/datasets/3899a065577747fbb824f0a21afc2e7c_0/downloads/data?format=shp&spatialRefId=4326'
-    },
-    {
-        'name': 'ams_latest_core_site_readings.geojson',
-        'url': 'https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/LATEST_CORE_SITE_READINGS/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson'
     }
 ]
 
