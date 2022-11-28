@@ -1,9 +1,9 @@
+import logging
 import os
+import shutil
 from pathlib import Path
 
 import requests as re
-import logging
-
 from pestuary.versioned_uploads import VersionedUploads
 
 # datasets to url mapping
@@ -46,13 +46,15 @@ def onboard_dataset_to_estuary(data, estuary_versioned_uploads, directory='data'
     download_dataset(data, directory)
     logging.info('Downloaded dataset %s from url %s.', dataset_name, url)
 
-    estuary_versioned_uploads.add_with_version(data=os.path.join(directory, dataset_name), filename=name)
+    estuary_versioned_uploads.add_with_version(data=os.path.join(directory, dataset_name), filename=dataset_name)
     logging.info('Uploaded dataset %s to estuary.', dataset_name)
 
 
 if __name__ == '__main__':
-    versioned_uploads = VersionedUploads()
+    versioned_uploads = VersionedUploads(url='https://api.estuary.tech', api_key=os.getenv('ESTUARY_API_KEY'))
     data_dir = 'data'
     Path(data_dir).mkdir(exist_ok=True)
     for dataset in datasets:
         onboard_dataset_to_estuary(dataset, versioned_uploads, data_dir)
+
+    shutil.rmtree(data_dir)
