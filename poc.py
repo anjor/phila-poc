@@ -27,6 +27,14 @@ datasets = [
     {
         'name': 'instore_forgivable_loan_program.csv',
         'url': 'https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+instore_forgivable_loan_program&filename=instore_forgivable_loan_program&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator'
+    },
+    {
+        'name': 'ams_latest_core_site_readings.csv',
+        'url': 'https://opendata.arcgis.com/api/v3/datasets/3899a065577747fbb824f0a21afc2e7c_0/downloads/data?format=csv&spatialRefId=4326'
+    },
+    {
+        'name': 'ams_latest_core_site_readings.shp',
+        'url': ''
     }
 ]
 
@@ -38,7 +46,8 @@ def get_dataset_details(data):
 def download_dataset(data, directory='data'):
     data_name, data_url = get_dataset_details(data)
     resp = re.get(data_url)
-    open(os.path.join('.', directory, data_name), 'wb').write(resp.content)
+    f = open(os.path.join('.', directory, data_name), 'wb').write(resp.content)
+    f.close()
 
 
 def onboard_dataset_to_estuary(data, estuary_versioned_uploads, directory='data'):
