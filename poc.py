@@ -21,6 +21,10 @@ datasets = [
         'url': 'https://phl.carto.com/api/v2/sql?q=SELECT+*,+ST_Y(the_geom)+AS+lat,+ST_X(the_geom)+AS+lng+FROM+business_licenses&filename=business_licenses&format=csv&skipfields=cartodb_id'
     },
     {
+        'name': 'business_licenses.shp',
+        'url': 'https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+business_licenses&filename=business_licenses&format=shp&skipfields=cartodb_id'
+    },
+    {
         'name': 'business_licenses.geojson',
         'url': 'https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+business_licenses&filename=business_licenses&format=geojson&skipfields=cartodb_id'
     },
@@ -34,7 +38,11 @@ datasets = [
     },
     {
         'name': 'ams_latest_core_site_readings.shp',
-        'url': ''
+        'url': 'https://opendata.arcgis.com/api/v3/datasets/3899a065577747fbb824f0a21afc2e7c_0/downloads/data?format=shp&spatialRefId=4326'
+    },
+    {
+        'name': 'ams_latest_core_site_readings.geojson',
+        'url': 'https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/LATEST_CORE_SITE_READINGS/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson'
     }
 ]
 
