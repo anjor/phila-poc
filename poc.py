@@ -46,7 +46,8 @@ def get_dataset_details(data):
 def download_dataset(data, directory='data'):
     data_name, data_url = get_dataset_details(data)
     resp = re.get(data_url)
-    f = open(os.path.join('.', directory, data_name), 'wb').write(resp.content)
+    f = open(os.path.join('.', directory, data_name), 'wb')
+    f.write(resp.content)
     f.close()
 
 
